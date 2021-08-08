@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%# Head %>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Emotion Camera - Virtual Study Buddy</title>
+		<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		<link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+		<link rel="icon" type="image/svg" href="/media/SPEDlogo.png" />
+    <script src="https://kit.fontawesome.com/43c1b0f304.js" crossOrigin="anonymous"></script>
+
+
+	</head>
+	<%# End of Head %>
+	<body>
+		<%# Import nav %>
+		<header>
+			<%- include('../partials/nav') %>
+		</header>
+
+		<%# Main content %>
+		<main>
+		
+
+			<%# Main cam div displayed on page %>
+			<div class="cam">
+				<h1>Emotion Camera</h1>
+				<%# Where the users webcam outputs %>
+				<div class="camDisplay" id="webcam-container"></div>
+				<%# Results %>
+				<div class="labelContainer" id="label-container"></div>
+				<%# Button to initiate the webcam process %>
+				<button type="button" onclick="init()" class="buttonPrimary" id="startBtn">Start</button>
+			</div>
+		<%# import carousel slider partial (using the nslider js library: https://github.com/fatihege/nslider %>
+		<%- include('../partials/galleryVideos') %>
+	
+		</main>
+		<%# End of main content %>
+		
+		<script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs@1.3.1/dist/tf.min.js"></script>
+		<script src="https://cdn.jsdelivr.net/npm/@teachablemachine/image@0.8/dist/teachablemachine-image.min.js"></script>
+
+
+		<script type="text/javascript">
+
+    const URL = "https://teachablemachine.withgoogle.com/models/Mvd2iyYhL/";
+
+    let model, webcam, labelContainer, maxPredictions;
+
+    // Load the image model and setup the webcam
+    async function init() {
+        const modelURL = URL + "model.json";
+        const metadataURL = URL + "metadata.json";
+
+        // load the model and metadata
+        // Refer to tmImage.loadFromFiles() in the API to support files from a file picker
+        // or files from your local hard drive
+        // Note: the pose library adds "tmImage" object to your window (window.tmImage)
+        model = await tmImage.load(modelURL, metadataURL);
+        maxPredictions = model.getTotalClasses();
+
+        // Convenience function to setup a webcam
+        const flip = true; // whether to flip the webcam
+        webcam = new tmImage.Webcam(200, 200, flip); // width, height, flip
+        await webcam.setup(); // request access to the webcam
+        await webcam.play();
+        window.requestAnimationFrame(loop);
+
+        // append elements to the DOM
+        document.getElementById("webcam-container").appendChild(webcam.canvas);
+        labelContainer = document.getElementById("label-container");
+        for (let i = 0; i < maxPredictions; i++) { // and class labels
+            labelContainer.appendChild(document.createElement("div"));
+        }
+				document.getElementById('startBtn').style.pointerEvents = 'none';
+				document.getElementById('startBtn').style.cursor = 'not-allowed';
+    }
+
+    async function loop() {
+        webcam.update(); // update the webcam frame
+        await predict();
+        window.requestAnimationFrame(loop);
+    }
+
+    // run the webcam image through the image model
+    async function predict() {
+        // predict can take in an image, video or canvas html element
+        const prediction = await model.predict(webcam.canvas);
+        for (let i = 0; i < maxPredictions; i++) {
+                percentage = prediction[i].probability.toFixed(2)
+                percentage = percentage * 100
+            const classPrediction =
+                prediction[i].className + ": " + percentage + "%";
+            labelContainer.childNodes[i].innerHTML = classPrediction;
+        }
+    }
+</script>
+	</body>
+</html>

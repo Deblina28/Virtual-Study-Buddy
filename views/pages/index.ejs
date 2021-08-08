@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%# Head %>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, 	initial-scale=1.0">
+		<title>Home - Virtual Study Buddy</title>
+		<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		<link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+		<link rel="icon" type="image/svg" href="/media/logo.png" />
+    <script src="https://kit.fontawesome.com/43c1b0f304.js" crossOrigin="anonymous"></script>
+	</head>
+	<%# End of head %>
+
+	<body>
+		<%# Import Navbar from partials (EJS equivalent to React components) %>
+		<header>
+			<%- include('../partials/nav') %>
+		</header>
+
+		<%# Main Content %>
+		<main>
+			<%# Import Hero + Cards %>
+			<%- include('../partials/hero') %>
+			<%- include('../partials/cards') %>	
+		</main>
+		<%# End of main content %>
+	</body>
+</html>

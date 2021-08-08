@@ -1,0 +1,103 @@
+<%# nslider cdn links %>
+<head>
+			<script src="https://cdn.jsdelivr.net/gh/fatihege/nslider@1.0.0/src/js/nslider.js"></script>
+		<link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/fatihege/nslider@1.0.0/src/css/nslider.css" />
+    <link rel="stylesheet" href="css/nslider.css" />
+	</head>
+	<%# parent container %>
+	<div class="carouselContainer">
+				<h2>Videos</h2>
+				<p>Learning in visual helps the student to learn the concepts in better way. As it makes the learning so fun</p>
+				<%# slider %>
+    		<div class="nslider">
+      	  <div class="nslider-wrapper">
+            <div class="nslider-slide" id="slide-1">
+						<%# card content %>
+              <div class="galleryCard">
+							 	<a href="https://www.youtube.com/watch?v=gGaDP7aHXCY" target="_blank">
+								  <img src="/media/thumbnail.jpeg" alt="thumbnail" />
+								 <article>
+								 	 <h2>Nuclear Fusion</h2>
+									 <p>
+Why is nuclear fusion not used to generate electricity?
+You really want to know the answer to this, right?
+But wait.
+Before answering the question, let us understand what is meant by nuclear fusion.
+When two lighter nuclei combine to form a heavy nucleus, a large amount of energy is released.
+This process is called nuclear fusion.
+</p>
+									</article>
+							</div>
+            </div>
+            <div class="nslider-slide" id="slide-2">
+						<%# card content %>
+               <div class="galleryCard">
+							 	<a href="https://www.youtube.com/watch?v=MFUUoNNo6tI" target="_blank">
+								 <img src="/media/thumbnail2.jpeg" alt="thumbnail" />
+								 <article>
+								 	 <h2>How batteries work ?</h2>
+									 <p>A battery works by converting chemical energy into electricity. A battery consists of one or more electrochemical cells. An electrochemical cell consists of two electrodes separated by an electrolyte.</p>
+									</article>
+                  </div>
+            </div>
+            <div class="nslider-slide" id="slide-2">
+						<%# card content %>
+               <div class="galleryCard">
+							 	<a href="https://www.youtube.com/watch?v=JCDGYdK1RDs" target="_blank">
+								 <img 
+      src="https://i.ytimg.com/vi/JCDGYdK1RDs/maxresdefault.jpg " alt="">
+								 <article>
+								 	 <h2>What if we were the size of the atoms ?</h2>
+									 <p>Firstly, an atom is millions of times smaller than a human hair. If we were the size of an atom, everything will start looking big. An Ant will probably seem like a  Dinosaur to us.
+Secondly, human beings will have to forget about travelling to different planets. Travelling just a few centimeters will be a huge achievement.</p>
+									</article>
+							</div>
+              </div>
+              <div class="nslider-slide" id="slide-2">
+            <%# card content %>
+               <div class="galleryCard">
+							 	<a href="https://www.youtube.com/watch?v=3NaWFWSPIv8" target="_blank">
+								 <img 
+      src="https://i.ytimg.com/vi/3NaWFWSPIv8/maxresdefault.jpg " alt="">
+								 <article>
+								 	 <h2> Numbers ?</h2>
+									 <p>Firstly, if Numbers disappeared, Math teachers would be one sad lot.
+Secondly, rich people have a big bank balance as compared to poor people, if Numbers disappeared, everybody's bank balance would be One Big Zero.
+Thirdly, scores are important in a competitive game, if Numbers disappeared, nobody will Win or Lose a game..</p>
+
+	</article>
+							</div>
+              </div>
+              <div class="nslider-slide" id="slide-2">
+            <%# card content %>
+               <div class="galleryCard">
+							 	<a href="https://www.youtube.com/watch?v=eDIma_Ai1Rc" target="_blank">
+								 <img 
+      src="https://i.ytimg.com/vi/eDIma_Ai1Rc/maxresdefault.jpg" alt="">
+								 <article>
+								 	 <h2>  Human Eye.</h2>
+									 <p> study about the different parts of an eye.
+Sclera is a tough outer coat that protects the entire eyeball.
+Choroid is a vascular layer of the eye.
+It contains blood vessels that nourish the inner parts of the eye.
+Cornea is the front portion of the eye.
+It is convex in shape and bulges outside..</p>
+
+									</article>
+            </div>
+        </div>
+        <div class="nslider-button nslider-button-prev"></div>
+        <div class="nslider-button nslider-button-next"></div>
+    		</div>
+			</div>
+
+		<script src="js/nslider.js"></script>
+		<script type="text/javascript">
+			// Carousel Slider
+		const slider = new NSlider({
+        elem: document.querySelector('.carouselContainer'),      
+        animation: false,
+        keyboardControl: false,
+        dots: true,
+    });
+		</script>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+	<%# Head %>
+	<head>
+		<meta charset="UTF-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>VR - Virtual Study Buddy</title>
+		<link rel="stylesheet" href="/styles/style.css" type="text/css" />
+		<link rel="stylesheet" href="/styles/nav.css" type="text/css" />
+		<link rel="icon" type="image/svg" href="/media/SPEDlogo.png"/>
+    <script src="https://kit.fontawesome.com/43c1b0f304.js" crossOrigin="anonymous"></script>
+	</head>
+	<%# end of head %>
+	<body>
+		<%# Import Nav %>
+		<header>
+			<%- include('../partials/nav') %>
+		</header>
+
+		<%# Main content %>
+		<main>
+		
+			<%# Text Header at top of page %>
+			<article class="vrHeader">
+				<h1>Augmented Reality</h1>
+				<p>Several students will not be able to understand the lessons by only reading the books. So, here comes AR learning. Using it will make the students understand the concepts in a better way.</p>
+			</article>
+			<%# Import cards %>
+			<section>
+				<%- include('../partials/arCards') %>
+				<%# Absolute SVGs that are displayed on page %>
+				<div class="arImgWrap">
+					<img src="/media/arImg.png" class="arImg" />
+				</div>
+			</section>
+		</main>
+		<%# End of main content %>
+
+	</body>
+</html>
